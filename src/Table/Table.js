@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { sumTotalValue, generateRows } from "./Helpers/tableCreation";
 
 const tableStyle = {
-  margin: "25px",
+  padding: "25px",
 };
 
 const Table = () => {
