@@ -1,25 +1,9 @@
 import TableHeader from "./TableHeader";
-import Row from "./Row";
 import { useEffect, useState } from "react";
+import { sumTotalValue, generateRows } from "./Helpers/tableCreation";
 
 const tableStyle = {
   margin: "25px",
-};
-
-const generateRows = (transactions) => {
-  return transactions.map((transaction, count) => (
-    <Row transaction={transaction} isOdd={Boolean(count % 2)} />
-  ));
-};
-
-const sumTotalValue = (transactions, setTotalValue) => {
-  var totalValue = 0;
-
-  transactions.forEach((transaction) => {
-    totalValue = totalValue + parseInt(transaction.Amount);
-  });
-
-  setTotalValue(totalValue);
 };
 
 const Table = () => {
@@ -44,7 +28,8 @@ const Table = () => {
 
       const flatPagedData = pagedData.flat();
 
-      sumTotalValue(flatPagedData, setTotalValue);
+      const totalValue = sumTotalValue(flatPagedData);
+      setTotalValue(totalValue);
       setTransactions(flatPagedData);
     };
 
@@ -54,7 +39,7 @@ const Table = () => {
   return (
     <div style={tableStyle}>
       <TableHeader totalValue={totalValue} />
-      {transactions && generateRows(transactions, totalValue, setTotalValue)}
+      {transactions && generateRows(transactions)}
     </div>
   );
 };
