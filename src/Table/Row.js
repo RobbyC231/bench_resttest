@@ -10,12 +10,21 @@ const rowStyle = {
 }
 
 const Row = ({transaction, isOdd}) => {
+    const lightText = {
+      color: isOdd ? 'rgb(9,139,140)' :  'rgb(185,185,186)'
+    }
+
+    const darkText = {
+      color: isOdd ? 'rgb(9,139,140)' :  'rgb(68,68,74)'
+    }
+
+
     return (
       <div style={rowStyle}> 
-          <DateColumn text={transaction.Date} isOdd={isOdd}/>
-          <CompanyColumn text={transaction.Company} isOdd={isOdd}/>
-          <AccountColumn text={transaction.Ledger} isOdd={isOdd}/>
-          <TotalColumn value={transaction.Amount} isOdd={isOdd}/>
+          <DateColumn text={transaction.Date} style={lightText}/>
+          <CompanyColumn text={transaction.Company} style={darkText}/>
+          <AccountColumn text={transaction.Ledger} style={lightText}/>
+          <TotalColumn value={transaction.Amount} style={darkText}/>
       </div>
     );
   }
