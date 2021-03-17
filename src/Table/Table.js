@@ -7,14 +7,24 @@ const tableStyle = {
 };
 
 const generateRows = (transactions) => {
-  console.log({ transactions });
   return transactions.map((transaction, count) => (
     <Row transaction={transaction} isOdd={Boolean(count % 2)} />
   ));
 };
 
+const sumTotalValue = (transactions, setTotalValue) => {
+  var totalValue = 0;
+
+  transactions.forEach((transaction) => {
+    totalValue = totalValue + parseInt(transaction.Amount);
+  });
+
+  setTotalValue(totalValue);
+};
+
 const Table = () => {
   const [transactions, setTransactions] = useState();
+  const [totalValue, setTotalValue] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,13 +36,16 @@ const Table = () => {
             `https://resttest.bench.co/transactions/${index}.json`
           );
           const data = await initialFetch.json();
-
           pagedData.push(data.transactions);
         }
       } catch (error) {
         console.log("Error on fetch", error);
       }
-      setTransactions(pagedData.flat());
+
+      const flatPagedData = pagedData.flat();
+
+      sumTotalValue(flatPagedData, setTotalValue);
+      setTransactions(flatPagedData);
     };
 
     fetchData();
@@ -40,8 +53,8 @@ const Table = () => {
 
   return (
     <div style={tableStyle}>
-      <TableHeader />
-      {transactions && generateRows(transactions)}
+      <TableHeader totalValue={totalValue} />
+      {transactions && generateRows(transactions, totalValue, setTotalValue)}
     </div>
   );
 };

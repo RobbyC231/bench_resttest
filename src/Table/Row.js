@@ -21,7 +21,7 @@ const Row = ({transaction, isOdd}) => {
 
     return (
       <div style={rowStyle}> 
-          <DateColumn text={transaction.Date} style={lightText}/>
+          <DateColumn text={transaction.Date} style={lightText} isHeader={false}/>
           <CompanyColumn text={transaction.Company} style={darkText}/>
           <AccountColumn text={transaction.Ledger} style={lightText}/>
           <TotalColumn value={transaction.Amount} style={darkText}/>
