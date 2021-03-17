@@ -13,13 +13,13 @@ const textStyle = {
   color: 'rgb(23,163,166)'
 }
 
-const TableHeader = () => {
+const TableHeader = ({totalValue}) => {
     return (
       <div style={tableHeaderStyle}> 
-          <DateColumn style={textStyle} text={"Date"}/>
+          <DateColumn style={textStyle} text={"Date"} isHeader={true}/>
           <CompanyColumn style={textStyle} text={"Company"}/>
           <AccountColumn style={textStyle} text={"Account"}/>
-          <TotalColumn style={textStyle} value={12}/>
+          <TotalColumn style={textStyle} value={totalValue}/>
       </div>
     );
   }

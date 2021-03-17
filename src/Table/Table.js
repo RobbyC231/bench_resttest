@@ -1,24 +1,47 @@
 import TableHeader from "./TableHeader";
-import Row from './Row';
+import { useEffect, useState } from "react";
+import { sumTotalValue, generateRows } from "./Helpers/tableCreation";
 
 const tableStyle = {
-  margin: '25px',
-}
+  margin: "25px",
+};
 
+const Table = () => {
+  const [transactions, setTransactions] = useState();
+  const [totalValue, setTotalValue] = useState();
 
-const generateRows = (transactions) => {
-  return transactions.transactions.map((transaction, count) => (
-    <Row transaction={transaction} isOdd={Boolean(count%2)} />
-  ))
-}
+  useEffect(() => {
+    const fetchData = async () => {
+      const pagedData = [];
 
-const Table = ({transactions}) => {
+      try {
+        for (let index = 1; true; index++) {
+          const initialFetch = await fetch(
+            `https://resttest.bench.co/transactions/${index}.json`
+          );
+          const data = await initialFetch.json();
+          pagedData.push(data.transactions);
+        }
+      } catch (error) {
+        console.log("Error on fetch", error);
+      }
+
+      const flatPagedData = pagedData.flat();
+
+      const totalValue = sumTotalValue(flatPagedData);
+      setTotalValue(totalValue);
+      setTransactions(flatPagedData);
+    };
+
+    fetchData();
+  }, []);
+
   return (
-    <div style={tableStyle}> 
-        <TableHeader/>
-        {generateRows(transactions)}
+    <div style={tableStyle}>
+      <TableHeader totalValue={totalValue} />
+      {transactions && generateRows(transactions)}
     </div>
   );
-}
+};
 
 export default Table;
