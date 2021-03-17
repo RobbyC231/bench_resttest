@@ -4,8 +4,8 @@ import { React } from 'react';
 
 const appStyle = {
   backgroundColor: 'rgb(239,237,232)',
-  height: '100vh',
-  minHeight: '100vh'
+  height: '100%',
+  minHeight: '100%'
 }
 
 const App = () => {
