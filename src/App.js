@@ -8,39 +8,12 @@ const appStyle = {
   minHeight: '100vh'
 }
 
-const FAKE_TRANSACTION_DATA =
-  {
-    "totalCount": 32, // Integer, total number of transactions across all pages
-    "page": 1, // Integer, current page
-    "transactions": [
-      {
-        "Date": "2013-12-22", // String, date of transaction
-        "Ledger": "Phone & Internet Expense", // String, ledger name
-        "Amount": "-110.71", // String, amount
-        "Company": "SHAW CABLESYSTEMS CALGARY AB" // String, company name
-      },
-      {
-        "Date": "2013-12-22", // String, date of transaction
-        "Ledger": "Phone & Internet Expense", // String, ledger name
-        "Amount": "-110.71", // String, amount
-        "Company": "SHAW CABLESYSTEMS CALGARY AB" // String, company name
-      },
-      {
-        "Date": "2013-12-22", // String, date of transaction
-        "Ledger": "Phone & Internet Expense", // String, ledger name
-        "Amount": "-110.71", // String, amount
-        "Company": "SHAW CABLESYSTEMS CALGARY AB" // String, company name
-      }
-    ]
-  }
-
 const App = () => {
   return (
     <div style={appStyle}>
       <Header />
-      <Table transactions={FAKE_TRANSACTION_DATA}/>
+      <Table/>
     </div>
-    
   );
 };
 
