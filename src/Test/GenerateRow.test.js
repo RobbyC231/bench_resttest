@@ -1,14 +1,8 @@
-import Header from "./Header.js";
-import Table from "./Table/Table.js"
-import { React } from 'react';
+import { render, screen } from '@testing-library/react';
+import Table from '../Table/Table';
 
-const appStyle = {
-  backgroundColor: 'rgb(239,237,232)',
-  height: '100vh',
-  minHeight: '100vh'
-}
-
-const FAKE_TRANSACTION_DATA =
+test('renders rows given transaction row', () => {
+  const TRANSACTION_DATA = 
   {
     "totalCount": 32, // Integer, total number of transactions across all pages
     "page": 1, // Integer, current page
@@ -33,15 +27,9 @@ const FAKE_TRANSACTION_DATA =
       }
     ]
   }
+  
+  render(<Table transactions={TRANSACTION_DATA} />);
 
-const App = () => {
-  return (
-    <div style={appStyle}>
-      <Header />
-      <Table transactions={FAKE_TRANSACTION_DATA}/>
-    </div>
-    
-  );
-};
 
-export default App;
+  
+});
