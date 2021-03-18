@@ -1,6 +1,5 @@
 const CompanyColumn = ({style, text, isOdd}) => {
     const companyColumnStyle = { 
-        flexGrow: '3',
         fontSize: 'small',
     }
 
