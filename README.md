@@ -1,5 +1,5 @@
 # Bench Rest Test
-Here is a solution for the Bench Rest Test which followed the problem outlined [here](https://resttest.bench.co/front-end)
+Here is a solution for the Bench Rest Test to address the problem outlined [here](https://resttest.bench.co/front-end)
 - This app was designed to read an API and gather all transactions to display in a table
 
 # What is required?
@@ -10,8 +10,8 @@ Here is a solution for the Bench Rest Test which followed the problem outlined [
 - `npm start`
 - Navigate to http://localhost:3000 in your browser
 
-# About app
-This app was built using Javascript and the react framework, utilizing ES6 syntax and react hooks
+# About the app
+This app was built using Javascript and the React framework, utilizing ES6 syntax and React hooks
 
 # Things to improve
 - Testing
@@ -20,4 +20,4 @@ This app was built using Javascript and the react framework, utilizing ES6 synta
 - Better error handling
     - Need something better than logging errors in the console from API fetch
 - Add ability to sort table based on column
-- Looks to be duplicate transactions in the data set, might want to add functionality to filter these out
+- There are duplicate transactions in the data set, might want to add functionality to filter these out
