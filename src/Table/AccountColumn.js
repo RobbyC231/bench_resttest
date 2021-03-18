@@ -1,6 +1,5 @@
 const AccountColumn = ({style, text, isOdd}) => {
     const accountColumnStyle = {
-        flexGrow: '3',
         fontSize: 'small',
     }
 
